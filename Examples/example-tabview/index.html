@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<title>Neutrino Example: Tab View</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Tab View"
+	>
+  <div nu-view="neutrino.components.TabView">
+  	<div>
+  		<span nu-action="call: onClickTab" nu-tab-view="tab1">Tab One</span>
+  		<span> | </span>
+	  	<span nu-action="call: onClickTab" nu-tab-view="tab2">Tab Two</span>
+  		<span> | </span>
+	  	<span nu-action="call: onClickTab" nu-tab-view="tab3">Tab Three</span>
+	  </div>
+  </div>
+  <div nu-view="tab1" class="nu-invisible">Tab View One</div>
+  <div nu-view="tab2" class="nu-invisible">Tab View Two</div>
+  <div nu-view="tab3" class="nu-invisible">Tab View Three</div>
+</body>
+
+</html>

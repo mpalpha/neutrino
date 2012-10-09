@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<title>Neutrino Example 4: Dynamics</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.setCheckOnline (true);
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example 4: Dynamics"
+	>
+	<div nu-view="movies:" nu-dynamic="true" nu-progress-id="movies-progress">
+		<div>browser name is $browser.name;</div>
+		<div>browser type is $browser.type;</div>
+		<div>browser version is $browser.version;</div>
+		<div>browser version (number) is $browser.versionnumber;</div>
+		<div>browser language is $browser.language;</div>
+		<div>
+			<nu:set key="bill" value="fred">
+				<nu:set key="name" value="bill">
+					<nu:get key="$name;" prefix="get">
+						<nu:capitalcase value="$get.value;" prefix="capital">
+							$capital.value;
+						</nu:capitalcase>
+					</nu:get>
+				</nu:set>
+			</nu:set>
+		</div>
+	  <nu:json
+	  	url="data/movies.json"
+	  	offlineurl="data/movies-offline.json"
+	  	cachekey="movies"
+	  	prefix="movies"
+	  	>
+	    <div>Received $movies.meta.size; records in JSON feed</div>
+	    <nu:list key="movies.data" prefix="movie">
+	      <nu:if lhs="$movie.meta.index;" rhs="0">
+	        <div>first movie title - $movie.title;</div>
+	      </nu:if>
+	      <nu:ifnot lhs="$movie.meta.index;" rhs="0">
+	        <div>movie title - $movie.title;</div>
+	      </nu:ifnot>
+	    </nu:list>
+	  </nu:json>
+	</div>
+	<div id="movies-progress" class="nu-invisible">LOADING</div>
+	<div nu-action="showview: movies">REFRESH</div>
+</body>
+
+</html>
+

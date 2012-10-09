@@ -1,0 +1,79 @@
+<project
+	name="ServerTemplate"
+	default="build"
+	>
+	<path
+		id="project.classpath"
+		>
+		<pathelement
+			path="web/WEB-INF/classes"
+		/>
+		<fileset
+			dir="web/WEB-INF/lib"
+			>
+			<include
+				name="**/*.jar"
+			/>
+		</fileset>
+	</path>
+
+	<target
+		name="copyjars"
+		description="Copies JARs to the web directory."
+		>
+		<copy
+			file="../server/neutrino-server.jar"
+			todir="web/WEB-INF/lib/"
+		/>
+	</target>
+
+	<target
+		name="jar"
+		depends="compile"
+		description="Jars up the app and sticks it in the tomcat directory."
+		>
+		<jar
+			destfile="neutrino-application.war"
+			basedir="web"
+		/>
+		<copy
+			file="neutrino-application.war"
+			tofile="tomcat/webapps/ROOT.war"
+		/>
+	</target>
+
+	<target
+		name="compile"
+		depends="clean"
+		description="Compiles Java source and copies other source files to the war."
+		>
+		<mkdir
+			dir="web/WEB-INF/classes"
+		/>
+
+		<javac
+			srcdir="app"
+			destdir="web/WEB-INF/classes"
+			classpathref="project.classpath"
+			debug="on"
+			includeantruntime="false"
+		/>
+
+	</target>
+
+	<target
+		name="build"
+		depends="jar"
+	/>
+	
+	<target
+		name="clean"
+		description="blows away all the class files"
+		>
+		<delete
+			dir="web/WEB-INF/classes"
+		/>
+	</target>
+
+</project>
+

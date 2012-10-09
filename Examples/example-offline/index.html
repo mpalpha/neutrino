@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<title>Neutrino Example 2: Views</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.setCheckOnline (true, 1000);
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Offline"
+	>
+	<div nu-view="movies:" nu-template-id="movies-template"></div>
+	<div id="movies-template" class="nu-template invisible">
+	  <nu:json url="feeds/movies.json" offlineurl="feeds/movies-offline.json" prefix="movies">
+	    <div>Received $movies.meta.entryCount; records in JSON feed</div>
+	    <nu:list key="movies.data" prefix="movie">
+	      <nu:if lhs="$movie.meta.index;" rhs="0">
+	        <div>first movie title - $movie.title;</div>
+	      </nu:if>
+	      <nu:ifnot lhs="$movie.meta.index;" rhs="0">
+	        <div>movie title - $movie.title;</div>
+	      </nu:ifnot>
+	    </nu:list>
+	  </nu:json>
+	</div>
+	
+	<div nu-action="showview: movies">REFRESH</div>
+</body>
+
+</html>
+

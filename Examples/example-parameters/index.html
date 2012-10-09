@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<title>Neutrino Example: Parameters</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">	   
+
+
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script src="js/parametersexample.js" type="text/javascript"></script>
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new ParametersExample ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Parameters"
+	>
+	<div nu-action="showview: parameters" nu-action-params="colour: blue;">Click here to set "colour" to "blue".</div>
+	
+	<div nu-view="parameters:" nu-dynamic="true" nu-view-params="colour: white (set by nu-view-params);">
+		<div>parameter "colour" is $params.colour;.</div>
+	</div>
+	
+	<div nu-action="showview: parameters" nu-action-params="colour: red;">Click here to set "colour" to "red".</div>
+</body>
+
+</html>

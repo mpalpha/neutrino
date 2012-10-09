@@ -1,0 +1,57 @@
+<html>
+
+<head>
+<title>Neutrino Example: Analytics</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">
+
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<script src="js/analyticsexample.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new AnalyticsExample ();
+  gApplication.analytics = new neutrino.Analytics ("Analytics Example");
+  gApplication.analytics.setBatchSize (5);
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Analytics"
+	>
+	<div nu-action="showview: parameters" nu-action-params="this: that;">CLICK HERE</div>
+	
+	<div nu-view="parameters:" nu-template-id="parameters-template" class="nu-invisible"></div>
+	<div id="parameters-template" class="nu-template">
+		<div>parameter "this" is $params.this;</div>
+	</div>
+	
+	<div nu-click="showParameters" nu-click-params="this: that;">CLICK HERE</div>
+</body>
+
+</html>

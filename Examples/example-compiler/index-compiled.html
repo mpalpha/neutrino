@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html wibble="fip">  <head>    <title>Neutrino Example 6: Code</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="all" href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">
+    <link id="application-css" rel="stylesheet" type="text/css" media="all" href="compiled.css" class="nu-browser-neutral-css">
+    <style type="text/css" class="nu-browser-neutral-css">
+
+.slide-in-from-left
+{
+	animation-name: slide-in-from-left;
+	animation-duration: 400ms;
+	animation-timing-function: linear;
+}
+
+@keyframes slide-in-from-left
+{
+	0%
+	{
+	  left: 0px;
+		opacity: 0;
+	}
+	
+	100%
+	{
+	  left: 200px;
+		opacity: 1;
+	}
+}
+
+.slide-out-to-right
+{
+	animation-name: slide-out-to-right;
+	animation-duration: 400ms;
+	animation-timing-function: linear;
+}
+
+@keyframes slide-out-to-right
+{
+  0%
+	{
+	  left: 200px;
+		opacity: 1;
+	}
+	
+	100%
+	{
+	  left: 400px;
+		opacity: 0;
+	}
+}
+
+</style>
+    <!-- JAVASCRIPT -->
+    <script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+    <script id="application-js" src="compiled.js" type="text/javascript"></script>
+    <!-- IMMEDIATE -->
+    <script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new CompilerExample ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+    <!-- view JS gets inserted above -->
+    <script type="text/javascript">neutrino.Loader.setEnabled(false);</script>
+  </head>
+  <body nu-app="Neutrino Example: Compiler">    <div nu-view="menu">
+      <div class="menu">        <div nu-action="setpage: blue/slide-out-to-right/slide-in-from-left">
+    Show Blue Square Page using nu-action/setpage
+  </div>
+        <div nu-action="setpage: red/slide-out-to-right/slide-in-from-left">
+    Show Red Square Page using nu-action/setpage
+  </div>
+        <div nu-action="call: clickMenuItem" nu-action-params="menu: blue;">
+    Show Blue Square Page using nu-action/call
+  </div>
+        <div nu-action="call: clickMenuItem" nu-action-params="menu: red;">
+    Show Red Square Page using nu-action/call
+  </div>
+</div>
+</div>
+    <div id="nu-page-container">
+      <div nu-page="blue" nu-action="call: clickSquare" class="blue-square invisible"></div>
+      <div nu-page="red" nu-action="call: clickSquare" class="red-square invisible"></div>
+    </div>
+  </body>
+</html>

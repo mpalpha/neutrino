@@ -1,0 +1,76 @@
+<html>
+
+<head>
+<title>Neutrino Example: Events</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">
+
+.red
+{
+	color: red;
+}
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script src="js/eventsexample.js" type="text/javascript"></script>
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new EventsExample ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Events"
+	nu-action="(keyup) call: onKeyUp"
+	>
+	<div
+		>Key up calls onKeyUp.</div>
+		
+	<div
+		nu-action="(down) call: onMouseDown"
+		>Mousedown here to call onMouseDown()</div>
+	<input
+		nu-action-1="(change) call: onTextChange"
+		nu-action-2="call: onTextClick"
+		nu-action-3="(blur) call: onTextBlur"
+		name="chug"
+		type="text"
+		size="120"
+		value="click calls onTextClick, any change calls onTextChange, blur calls onTextBlur"
+		>
+	<div
+		class="mouseover"
+		nu-action-1="(mouseover) showview: overview"
+		nu-action-2="(mouseout) hideview: overview"
+		>Mouseover here to show the OVERVIEW.</div>
+		
+	<div
+		nu-view="overview" class="red invisible"
+		>THIS IS THE OVERVIEW</div>
+</body>
+
+</html>

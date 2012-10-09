@@ -1,0 +1,91 @@
+/* application specific global styles go here */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  
+}
+
+p, ol, ul, li {
+  margin: 0; padding: 0;
+}
+
+div { 
+  box-sizing: border-box;
+}
+
+a { text-decoration: none; color: #000; }
+
+
+.red {
+  background-color: red !important;
+}
+
+.container {
+  position: absolute;
+  width: 768px;
+  height: 1004px;
+}
+
+#nu-page-container {
+  position: absolute;
+  background: #ccc;
+  width: 768px;
+  height: 1004px;
+  overflow: hidden;
+  perspective: 800px;
+}
+
+/*
+  included by neutrino's default index.html after neutrino.css,
+  contains default application-specific styles
+  potentially overriding neutrino ones
+*/
+
+.transition-visible {
+  animation-name: nu-fade-in;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+}
+
+.transition-invisible {
+  animation-name: nu-fade-out;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+}
+
+
+.my-slide-up {
+  animation-name: my-slide-up-animation;
+  animation-duration: 400ms;
+  animation-timing-function: linear;
+}
+
+.my-slide-down {
+  animation-name: my-slide-down-animation;
+  animation-duration: 400ms;
+  animation-timing-function: linear;
+}
+
+@keyframes my-slide-up-animation {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  
+  100% {
+    transform: translate3d(0,-1300px,0);
+  }
+}
+
+@keyframes my-slide-down-animation {
+  0% {
+    transform: translate3d(0,-1300px,0);
+  }
+  
+  100% {
+    transform: translate3d(0,0,0);
+  }
+}

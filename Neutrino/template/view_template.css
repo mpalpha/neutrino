@@ -1,0 +1,29 @@
+.{TEMPLATE} {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	width: 200px;
+	height: 200px;
+	transform: translate3d(0,0,0);
+	background: rgba(255,0,0,0.4);
+}
+
+.{TEMPLATE}.nu-transition-visible {
+	animation-name: nu-fade-in;
+	animation-duration: 300ms;
+	animation-timing-function: ease-in-out;
+}
+
+.{TEMPLATE}.nu-visible {
+	display: block;
+}
+
+.{TEMPLATE}.nu-transition-invisible {
+	animation-name: nu-fade-out;
+	animation-duration: 300ms;
+	animation-timing-function: ease-in;
+}
+
+.{TEMPLATE}.nu-invisible {
+	display: none;
+}

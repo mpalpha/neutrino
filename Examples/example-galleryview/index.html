@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<title>Neutrino Example: Gallery View</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.preventMobileScrolling ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Gallery View"
+	>
+  <div nu-view="neutrino.components.GalleryView" class="nu-horizontal" style="width: 400px; height: 400px; overflow: hidden;">
+    <div class="nu-container" style="height: 400px;">
+       <div class="nu-element" style="float: left; text-align: center; width: 400px; height: 400px; background: rgba(0,0,0,0.3);">ONE</div>
+       <div class="nu-element" style="float: left; text-align: center; width: 400px; height: 400px; background: rgba(0,100,0,0.3);">TWO</div>
+       <div class="nu-element" style="float: left; text-align: center; width: 400px; height: 400px; background: rgba(0,200,0,0.3);">THREE</div>
+    </div>
+  </div>
+</body>
+
+</html>

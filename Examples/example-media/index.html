@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<title>Neutrino Example: Video View</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Media View"
+	>
+	<div nu-dynamic="true"
+		nu-component="neutrino.components.MediaView" nu-view="media"
+		>
+		<nu:if lhs="$params.type;" rhs="video">
+			<video>
+				<nu:list key="params.sources" prefix="source">
+					<source src="$source;"></source>
+				</nu:list>
+			</video>
+		</nu:if>
+		<nu:if lhs="$params.type;" rhs="audio">
+			<audio>
+				<nu:list key="params.sources" prefix="source">
+					<source src="$source;"></source>
+				</nu:list>
+			</audio>
+		</nu:if>
+	</div>
+
+	<!-- duration display -->
+	<div class="nu-media-client"
+		nu-dynamic="true"
+		nu-component="neutrino.components.MediaClientView" nu-view="metadata"
+		nu-media-view="media" nu-media-events="loadedmetadata"
+		>
+		<nu:ifnot lhs="$params.mediastate;" rhs="">
+			<div>
+				Media duration is
+				$params.mediastate.duration.hours;h
+				$params.mediastate.duration.minutes;m
+				$params.mediastate.duration.seconds;s
+				$params.mediastate.duration.milliseconds;ms
+			</div>
+		</nu:ifnot>
+	</div>
+	
+	<!-- play/pause controller -->
+	<!-- note in this case it receives canplay to switch to the play/pause state -->
+	<div class="nu-media-client"
+		nu-dynamic="true"
+		nu-component="neutrino.components.MediaClientView" nu-view="playpause"
+		nu-media-view="media" nu-media-events="canplay,play,pause,ended"
+		>
+		<!-- initial state on visible -->
+		<nu:if lhs="$params.mediastate;" rhs="">
+			<div
+				nu-action="showview: media" nu-action-params="source: assets/captured.mp4; type: video;"
+				>SET SOURCE</div>
+		</nu:if>
+		
+		<nu:ifnot lhs="$params.mediastate;" rhs="">
+			<nu:if lhs="$params.mediastate.playing;" rhs="true">
+				<div nu-action="call: pause">PAUSE</div>
+			</nu:if>
+			<nu:ifnot lhs="$params.mediastate.playing;" rhs="true">
+				<div nu-action="call: play">PLAY</div>
+			</nu:ifnot>
+		</nu:ifnot>
+	</div>
+	
+	<div class="nu-media-client"
+		nu-dynamic="true"
+		nu-component="neutrino.components.MediaClientView" nu-view="timeline"
+		nu-media-view="media" nu-media-events="progress,timeupdate"
+		>
+		<nu:ifnot lhs="$params.mediastate;" rhs="">
+			<div>progress = $params.mediastate.progress.percent;%
+				($params.mediastate.progress.hours;h
+				$params.mediastate.progress.minutes;m
+				$params.mediastate.progress.seconds;s
+				$params.mediastate.progress.milliseconds;ms)
+			</div>
+			<div>played = $params.mediastate.play.percent;%
+				($params.mediastate.play.hours;h
+				$params.mediastate.play.minutes;m
+				$params.mediastate.play.seconds;s
+				$params.mediastate.play.milliseconds;ms)
+			</div>
+			<div>remaining = $params.mediastate.remaining.percent;%
+				($params.mediastate.remaining.hours;h
+				$params.mediastate.remaining.minutes;m
+				$params.mediastate.remaining.seconds;s
+				$params.mediastate.remaining.milliseconds;ms)
+			</div>
+		</nu:ifnot>
+	</div>
+	
+	<div class="nu-media-client"
+		nu-dynamic="true"
+		nu-component="neutrino.components.MediaClientView" nu-view="progressbar"
+		nu-media-view="media" nu-media-events="progress,timeupdate"
+		nu-action-1="(down) call: onMouseDown"
+		nu-action-2="(move) call: onMouseMove"
+		nu-action-3="(up) call: onMouseUp"
+		style="width: 200px; height: 50px;"
+		>
+		<nu:ifnot lhs="$params.mediastate;" rhs="">
+			<div style="width: 200px; border: 1px solid black;">
+				<nu:ifnot lhs="$params.mediastate;" rhs="">
+					<div style="width: $params.mediastate.progress.percent;%; height: 50px; background-color: blue;">
+						<div style="width: $params.mediastate.play.percent;%; height: 50px; background-color: red;">
+						</div>
+					</div>
+				</nu:ifnot>
+			</div>
+		</nu:ifnot>
+	</div>
+</body>
+
+</html>

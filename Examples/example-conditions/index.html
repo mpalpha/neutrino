@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>Neutrino Example: Events</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">
+
+.red
+{
+	color: red;
+}
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Events"
+	>
+	<div nu-view="conditions:" nu-dynamic="true">
+		<!-- simple one test -->
+		
+		<div>simple test for equality</div>
+		<nu:if
+			lhs="1" rhs="1"
+			>
+			PASS
+		</nu:if>
+		<nu:ifnot
+			lhs="1" rhs="1"
+			>
+			FAIL
+		</nu:ifnot>
+		
+		<!-- simple AND -->
+		
+		<div>simple AND</div>
+		<nu:if
+			operation="and"
+			lhs-1="1" rhs-1="1"
+			lhs-2="2" rhs-2="2"
+			>
+			PASS
+		</nu:if>
+		<nu:ifnot
+			operation="and"
+			lhs-1="1" rhs-1="1"
+			lhs-2="2" rhs-2="2"
+			>
+			FAIL
+		</nu:ifnot>
+		
+		<!-- compound OR -->
+		
+		<div>simple OR</div>
+		<nu:if
+			operation="or"
+			lhs-1="1" rhs-1="1"
+			lhs-2="2" rhs-2="1"
+			>
+			PASS
+		</nu:if>
+		<nu:ifnot
+			operation="or"
+			lhs-1="1" rhs-1="1"
+			lhs-2="2" rhs-2="2"
+			>
+			FAIL
+		</nu:ifnot>
+		
+	</div>
+</body>
+
+</html>

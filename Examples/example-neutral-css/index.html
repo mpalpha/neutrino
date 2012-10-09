@@ -1,0 +1,57 @@
+<html>
+
+<head>
+<title>Neutrino Example: CSS</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style id="styles" type="text/css" class="nu-browser-neutral-css">
+
+.chug
+{
+	transition-property: border-radius, transform;
+	transform-style: preserve-3d;
+}
+
+.boxage
+{
+	/* this should be mapped to -webkit-box, etc, per browser */
+	display: box;
+}
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: CSS"
+	>
+	<div>Check the style tag with the ID of nu-browser-specific-css for the browser specific CSS.</div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+
+<div nu-view="{TEMPLATE}:jc" nu-dynamic="true" nu-progress-id="{TEMPLATE}-progress">
+  <nu:json url="data/{TEMPLATE}.json" offlineurl="data/{TEMPLATE}-offline.json" prefix="{TEMPLATE}">
+    <div>Received ${TEMPLATE}.meta.entryCount; records in JSON feed</div>
+    <nu:list key="{TEMPLATE}.data" prefix="movie">
+      <nu:if lhs="${TEMPLATE}.meta.index;" rhs="0">
+        <div>first {TEMPLATE} title - ${TEMPLATE}.title;</div>
+      </nu:if>
+      <nu:ifnot lhs="${TEMPLATE}.meta.index;" rhs="0">
+        <div>{TEMPLATE} title - ${TEMPLATE}.title;</div>
+      </nu:ifnot>
+    </nu:list>
+  </nu:json>
+</div>
+<div id="{TEMPLATE}-progress" class="invisible">LOADING</div>
+

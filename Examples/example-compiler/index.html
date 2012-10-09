@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html wibble="fip">
+
+<head>
+<title>Neutrino Example 6: Code</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<link id="application-css" rel="stylesheet" type="text/css" media="all" nu-href="base.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">
+
+.slide-in-from-left
+{
+	animation-name: slide-in-from-left;
+	animation-duration: 400ms;
+	animation-timing-function: linear;
+}
+
+@keyframes slide-in-from-left
+{
+	0%
+	{
+	  left: 0px;
+		opacity: 0;
+	}
+	
+	100%
+	{
+	  left: 200px;
+		opacity: 1;
+	}
+}
+
+.slide-out-to-right
+{
+	animation-name: slide-out-to-right;
+	animation-duration: 400ms;
+	animation-timing-function: linear;
+}
+
+@keyframes slide-out-to-right
+{
+  0%
+	{
+	  left: 200px;
+		opacity: 1;
+	}
+	
+	100%
+	{
+	  left: 400px;
+		opacity: 0;
+	}
+}
+
+</style>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<script id="application-js" src="js/compilerexample.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new CompilerExample ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Compiler"
+	>
+	<div nu-view="menu"></div>
+</body>
+
+</html>

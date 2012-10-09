@@ -1,0 +1,26 @@
+.progress-view
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.progress-view .curtain
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	color: black;
+	opacity: 0.5;
+}
+
+.progress-view .title
+{
+	width: 100px;
+	color: black;
+	opacity: 1;
+	background-color: red;
+}
+

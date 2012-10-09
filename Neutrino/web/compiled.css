@@ -1,0 +1,287 @@
+/* application specific global styles go here */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  
+}
+
+p, ol, ul, li {
+  margin: 0; padding: 0;
+}
+
+div { 
+  box-sizing: border-box;
+}
+
+a { text-decoration: none; color: #000; }
+
+
+.red {
+  background-color: red !important;
+}
+
+.container {
+  position: absolute;
+  width: 768px;
+  height: 1004px;
+}
+
+#nu-page-container {
+  position: absolute;
+  background: #ccc;
+  width: 768px;
+  height: 1004px;
+  overflow: hidden;
+  perspective: 800px;
+}
+
+/*
+  included by neutrino's default index.html after neutrino.css,
+  contains default application-specific styles
+  potentially overriding neutrino ones
+*/
+
+.transition-visible {
+  animation-name: nu-fade-in;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+}
+
+.transition-invisible {
+  animation-name: nu-fade-out;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+}
+
+
+.my-slide-up {
+  animation-name: my-slide-up-animation;
+  animation-duration: 400ms;
+  animation-timing-function: linear;
+}
+
+.my-slide-down {
+  animation-name: my-slide-down-animation;
+  animation-duration: 400ms;
+  animation-timing-function: linear;
+}
+
+@keyframes my-slide-up-animation {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  
+  100% {
+    transform: translate3d(0,-1300px,0);
+  }
+}
+
+@keyframes my-slide-down-animation {
+  0% {
+    transform: translate3d(0,-1300px,0);
+  }
+  
+  100% {
+    transform: translate3d(0,0,0);
+  }
+}
+
+
+
+
+#home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 748px;
+  height: 1024px;
+  transform: translate3d(0,0,0);
+  font-size: 36px;
+}
+
+#home.nu-transition-visible {
+  animation-name: nu-fade-in;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+#home.nu-visible {
+  display: block;
+}
+
+#home.nu-transition-invisible {
+  animation-name: nu-fade-out;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+#home.nu-invisible {
+  display: none;
+}
+
+
+.circle-spinner
+{ 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0);
+  z-index: 100000;
+}   
+
+.circle-spinner .sp-container
+{ 
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  width: 100px; 
+  height: 100px;
+
+}   
+
+
+.circle-spinner .nu-transition-visible
+{
+  animation-name: nu-fade-in;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+}
+
+.circle-spinner .nu-transition-invisible
+{
+  animation-name: nu-fade-out;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+}
+
+.circle-spinner .circle
+{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgba(0,0,0,.5);
+  transform: translate3d(0,0,0) scale(0);
+  animation-duration: 1500ms;
+  animation-delay: 0ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+  .circle-spinner .circle.one
+  {
+    top: 4px;
+    left: 25px;
+  }
+  
+  .circle-spinner.nu-visible .circle.one
+  {
+    animation-name: circle-spinner-one;
+  }
+  
+  .circle-spinner .circle.two
+  {
+    right: 0px;
+    bottom: 3px;
+  }
+  
+  .circle-spinner.nu-visible .circle.two
+  {
+    animation-name: circle-spinner-one;
+    animation-delay: 500ms;
+  }
+  
+  .circle-spinner .circle.three
+  {
+    left: 0px;
+    bottom: 3px;
+  }
+  
+  .circle-spinner.nu-visible .circle.three
+  {
+    animation-name: circle-spinner-one;
+    animation-delay: 1000ms;
+  }
+
+
+@keyframes circle-spinner-one
+{
+  0%
+  {
+    transform: translate3d(0,0,0) scale(0);
+    opacity: 1;
+  }
+  66.6%
+  {
+    /*transform: translate3d(0,0,0) scale(1); opacity: 1;*/
+    transform: translate3d(0,0,0) scale(1);
+    opacity: 0;
+  }
+  100%
+  {
+    transform: translate3d(0,0,0) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes circle-spinner-two
+{
+  0%
+  {
+    transform: translate3d(0,0,0) scale(1);
+    opacity: 1;
+  }
+  33.299%
+  {
+    transform: translate3d(0,0,0) scale(.6);
+    opacity: 0;
+  }
+  33.3%
+  {
+    transform: translate3d(0,0,0) scale(0);
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translate3d(0,0,0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes circle-spinner-three
+{
+  0%
+  {
+    transform: translate3d(0,0,0) scale(.5);
+    opacity: 1;
+  }
+  33.3%
+  {
+    transform: translate3d(0,0,0) scale(1);
+    opacity: 1;
+  }
+  66%
+  {
+    transform: translate3d(0,0,0) scale(.6);
+    opacity: 0;
+  }
+  66.001%
+  {
+    transform: translate3d(0,0,0) scale(0);
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translate3d(0,0,0) scale(.5);
+    opacity: 1;
+  }
+}
+

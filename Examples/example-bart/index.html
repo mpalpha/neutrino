@@ -1,0 +1,120 @@
+<html>
+
+<head>
+<title>Neutrino Example: BART</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">
+
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: BART"
+	>
+	<div nu-view="stations:" nu-dynamic="true">
+		<div>Click on a station for a list of estimated departure times at the bottom of the page</div>
+		<nu:xml
+			url="http://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V"
+			cachekey="stations"
+			prefix="document"
+			>
+			<nu:list key="document.children" prefix="documentchild" searchkey="name" searchvalue="root">
+				<nu:list key="documentchild.children" prefix="rootchild" searchkey="name" searchvalue="stations">
+					<nu:list key="rootchild.children" prefix="stationschild" searchkey="name" searchvalue="station">
+						<nu:list key="stationschild.children" prefix="stationchild">
+							<nu:list key="stationchild.children" prefix="stationproperty">
+								<nu:set key="page.station_$stationchild.name;" value="$stationproperty.value;" context="page"></nu:set>
+							</nu:list>
+						</nu:list>
+						<div
+							nu-action-1="showview: destinations" nu-action-1-params="station_abbr: $page.station_abbr;"
+							nu-action-2="hideview: stations"
+							>
+							$page.station_name; ($page.station_abbr;)</div>
+					</nu:list>
+				</nu:list>
+			</nu:list>
+		</nu:xml>
+	</div>
+	<hr/>
+	<div
+		nu-view="destinations:"
+		nu-dynamic="true"
+		nu-action-1="showview: stations"
+		nu-action-2="hideview: destinations"
+		class="nu-invisible"
+		>
+		<div>Click to go back to station list</div>
+		<nu:xml
+			url="http://api.bart.gov/api/etd.aspx?cmd=etd&orig=$params.station_abbr;&key=MW9S-E7SL-26DU-VV8V"
+			cachekey="destination-$params.station_abbr;"
+			prefix="document"
+			>
+			<nu:list key="document.children" prefix="documentchild" searchkey="name" searchvalue="root">
+				<nu:list key="documentchild.children" prefix="rootchild" searchkey="name" searchvalue="station">
+					<nu:list key="rootchild.children" prefix="stationchild">
+						<nu:if lhs="$stationchild.name;" rhs="name">
+							<nu:list key="stationchild.children" prefix="nameproperty">
+								<div><nu:uppercase value="$nameproperty.value;" prefix="uppercase">$uppercase.value;</nu:uppercase></div>
+							</nu:list>
+						</nu:if>
+						<nu:if lhs="$stationchild.name;" rhs="etd">
+							<nu:list key="stationchild.children" prefix="etdchild">
+								<nu:if lhs="$etdchild.name;" rhs="destination">
+									<nu:list key="etdchild.children" prefix="etdproperty">
+										<div>$etdproperty.value;</div>
+									</nu:list>
+								</nu:if>
+								<nu:if lhs="$etdchild.name;" rhs="estimate">
+									<nu:list key="etdchild.children" prefix="estimate">
+										<nu:list key="estimate.children" prefix="estimateproperty">
+											<nu:set key="page.estimate_$estimate.name;" value="$estimateproperty.value;" context="page"></nu:set>
+										</nu:list>
+									</nu:list>
+									<nu:if lhs="$page.estimate_minutes;" rhs="Arriving">
+										<div>Arriving, $page.estimate_length; car train, platform $page.estimate_platform;</div>
+									</nu:if>
+									<nu:ifnot lhs="$page.estimate_minutes;" rhs="Arriving">
+										<div>$page.estimate_minutes; minutes, $page.estimate_length; car train, platform $page.estimate_platform;</div>
+									</nu:ifnot>
+								</nu:if>
+							</nu:list>
+						</nu:if>
+					</nu:list>
+				</nu:list>
+			</nu:list>
+		</nu:xml>
+	</div>
+</body>
+
+</html>

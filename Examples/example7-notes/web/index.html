@@ -1,0 +1,84 @@
+<html>
+
+<head>
+<title>Neutrino Server Example: Notes</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+<link rel="stylesheet" type="text/css" media="all" nu-href="base.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">
+
+.note-summary
+{
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- application specific base class -->
+<script id="application-js" src="js/application.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Server Example: Notes"
+	>
+	<div>Notes currently in the database --</div>
+	<div nu-view="notes:" nu-dynamic="true">
+		<nu:json url="/notes/all" prefix="notes">
+			<nu:if lhs="$notes.type;" rhs="list">
+				<nu:list key="notes.data" prefix="note">
+					<div nu-action="showview: note" nu-action-params="id: $note.id;" class="note-summary">$note.note;</div>
+				</nu:list>
+			</nu:if>
+			<nu:if lhs="$notes.type;" rhs="error">
+				<div>Sorry, error getting notes. Is the database set up, and the notes table created?</div>
+			</nu:if>
+		</nu:json>
+	</div>
+	<div nu-view="note:" nu-dynamic="true" class="nu-invisible">
+		<div>This is note with ID $params.id;</div>
+		<nu:json url="/notes/get?id=$params.id;" prefix="note">
+			<nu:if lhs="$note.type;" rhs="map">
+				<div>$note.data.note;</div>
+			</nu:if>
+			<nu:if lhs="$note.type;" rhs="error">
+				<div>Sorry, error getting note $note.id;. Is the database set up, and the notes table created?</div>
+			</nu:if>
+		</nu:json>
+	</div>
+	<div nu-action="showview: addnote">Click HERE to add a note --</div>
+	<div nu-view="addnote:" class="nu-invisible">
+		<textarea id="note-text" rows="4" cols="40">
+		</textarea>
+		<div><button nu-action="call: addNote">Save</button></div>
+	</div>
+</body>
+
+</html>

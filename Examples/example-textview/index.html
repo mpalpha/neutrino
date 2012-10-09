@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<title>Neutrino Example: Text View</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Text View"
+	>
+  <div nu-view="neutrino.components.TextView">
+  	<input name="stuff" type="text" class="nu-text-field" nu-max-length="30"
+  		nu-action-1="(keyup) call: onKeyUp"
+  		nu-action-2="(change) call: onTextChange"
+  		>
+  	<div>Text length: <span class="nu-text-length"></span></div>
+  	<div>Characters remaining: <span class="nu-text-remaining"></span></div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+#home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 748px;
+  height: 1024px;
+  transform: translate3d(0,0,0);
+  font-size: 36px;
+}
+
+#home.nu-transition-visible {
+  animation-name: nu-fade-in;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+#home.nu-visible {
+  display: block;
+}
+
+#home.nu-transition-invisible {
+  animation-name: nu-fade-out;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+#home.nu-invisible {
+  display: none;
+}

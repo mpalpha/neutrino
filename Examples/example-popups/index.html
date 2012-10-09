@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<title>Neutrino Example: Popups</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">	   
+
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script src="js/popupsexample.js" type="text/javascript"></script>
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new PopupsExample ();
+  gApplication.start ();
+  
+  console.log (gApplication);
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example: Popups"
+	>
+	<form>
+		<div id="makers-template" nu-view="makers:" nu-dynamic="true">
+			<nu:json url="http://localhost:8080/makers/all" prefix="makers">
+				<nu:if lhs="$makers.meta.length;" rhs="0">
+					<div>No makers loaded.</div>
+				</nu:if>
+				<nu:ifnot lhs="$makers.meta.length;" rhs="0">
+					<nu:select name="maker_id" nu-action="(change) call: clickMakerPopup">
+						<nu:list key="makers" prefix="maker">
+							<nu:option value="$maker.id;">$maker.name;</nu:option>
+						</nu:list>
+					</nu:select>
+				</nu:ifnot>
+			</nu:json>
+		</div>
+		
+		<div id="models-template" nu-view="models:" nu-dynamic="true">
+			<nu:json url="http://localhost:8080/models/maker?maker_id=$params.maker_id;" prefix="models">
+				<nu:if lhs="$models.meta.length;" rhs="0">
+					<div>No models for this maker.</div>
+				</nu:if>
+				<nu:ifnot lhs="$models.meta.length;" rhs="0">
+					<nu:select name="model_id" nu-action="(change) call: clickModelsPopup">
+						<nu:list key="models" prefix="model">
+							<nu:option value="$model.id;">$model.name;</nu:option>
+						</nu:list>
+					</nu:select>
+				</nu:ifnot>
+			</nu:json>
+		</div>
+	</form>
+</body>
+
+</html>

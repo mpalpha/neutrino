@@ -1,0 +1,214 @@
+NEUTRINO CHANGELOG
+
+868
+syndicating changes, make distro
+
+862
+fix webkit browser flag typo, sigh
+
+860
+faq update from Angel
+
+858
+add Application.preventMobileScrolling()
+
+856
+documentation update
+
+855
+quickstart updates
+
+852
+add gettaglet for parameterising context keys
+changecase now capitalises
+
+850
+added mit licence to neutrino.js and neutrino.css
+
+847
+expanded browser name, type, version checking
+
+845
+assistant checks args if loading from prefs doesn't work
+
+843
+GA logs entire page url, doesn't leave GA to decide
+
+839
+Google Analytics support
+analytics bottlenecking changes
+analytics documentation
+
+834
+remove any goog.* references
+remove extraneous logging
+
+833
+set source media on MediaView from markup
+
+832
+searchkey & searchvalue in listtaglet
+(related) bart example updates
+
+828
+make media component scrubbable
+
+826
+support play() from specified duration fraction
+
+823
+add media client & server components and usage example
+
+809
+tweaks to prototype media component
+
+808
+add Janx licence
+
+806
+fix compiler nu-ref issue
+fix compiler loop on empty view markup fragments
+
+801
+fix weird js issue affecting conditionals
+
+796
+detect browser language, add to nuBrowser and root Janx context
+
+794 
+nu-view-params processing now happens before onLoaded()
+
+791
+fix for css property corner case
+
+788
+rewriting vw and vh using window.innerWidth/Height
+
+778
+nu-view-params
+nu:list extras
+nu:comment
+
+776
+rename Task entities, final time
+include server javadoc in distro
+move FFMPEG into premium
+
+770
+move components to server-premium
+
+769
+add standard fixtures to app-template
+reasonably ok server doc
+
+767
+nu:if etc have some multi attribute logic as nu-action
+documentation updates
+
+766
+compiler-remove class changes to nu-compiler-remove
+custom taglet documentation
+
+765
+add factory methods in application so treewalkers can be subclassed
+
+763
+swap order of View animation handlers in Page
+split client and server dev guides
+documentation updates
+
+760
+assistant drivers in template
+template updates
+
+756
+visible -> nu-visible
+invisible -> nu-invisible
+add licence
+remove old plugins
+remove update-examples
+update update-client
+second stab at assistant, better
+
+753
+add first stab at the assistant
+
+752
+dev guide / reference updates and fixes
+add FAQ
+
+750
+better check for asset loader running in page animation end handler
+
+749
+app template updates
+
+744
+configure circlespinner as progress view in app-template
+
+743
+update to nu-href for browser neutral <link>
+
+742
+add example7, client/server notes application
+
+736
+fix json assumption in ajaxtaglet caching
+
+734
+Refactor nu:json into nu:ajax, nu:json, nu:xml.
+Remove mismatched event type squawking in handleAction().
+Really add example-tabview.
+
+732
+Deprecate <nu:cachejson>.
+
+730
+New QuickStart PDF.
+
+729
+Lots of method and property documentation in the DevGuide / Reference.
+
+728
+More performant CSS reprocessing.
+
+727
+Application.isAndroid() deprecated.
+
+726
+setpage without a Page key now refreshes the current Page.
+
+718
+in nu, support application paths with spaces in them.
+
+717
+in setParams() throughout, only overwrite matching parameter keys. retain the others.
+
+714
+modernise TabView, add example-tabview
+
+713
+modernise TextView
+
+712
+add example-swipeview and example-galleryview
+
+711
+incorporate circlespinner into example-progressview
+circlespinner will move to app-template
+
+709
+add example-progressview
+
+708
+support for nu-progress-view on <body>
+
+707
+support multiple classes in addclass, removeclass, toggleclass
+
+706
+add licence for Node.js
+
+700
+stop some squawking if onVisible() isn't called, as this often happens naturally
+

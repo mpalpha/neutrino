@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<title>Neutrino Example 1: CSS</title>
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" media="all" nu-href="neutrino/css/neutrino.css" class="nu-browser-neutral-css">	   
+
+<style type="text/css" class="nu-browser-neutral-css">	   
+
+.square
+{
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.blue-bg
+{
+  background-color: blue;
+}
+
+</style>
+
+<!-- JAVASCRIPT -->
+
+<script src="neutrino/js/neutrino.js" type="text/javascript"></script>
+
+<!-- IMMEDIATE -->
+
+<script language="javascript" type="text/javascript">
+
+var	gApplication = null;
+
+function
+main ()
+{
+  gApplication = new neutrino.Application ();
+  gApplication.start ();
+}
+
+document.addEventListener ("DOMContentLoaded", main, false);
+
+</script>
+
+<!-- view JS gets inserted above -->
+
+</head>
+
+<body
+	nu-app="Neutrino Example 1: CSS"
+	>
+  <div class="square"></div>
+  <div nu-action="addclass: blue-bg/.square">
+    Click here to add the blue-bg class to the square.
+  </div>
+  <div nu-action="removeclass: blue-bg/.square">
+    Click here to remove the blue-bg class from the square.
+  </div>
+  <div nu-action="toggleclass: blue-bg/.square">
+    Click here to toggle the blue-bg class on the square.
+  </div>
+  <div
+  	nu-action-1="addclass: blue-bg/.square"
+  	nu-action-2="removeclass: blue-bg/.square"
+  	>
+    Click here to add and remove blue-bg class (ie do nothing).
+  </div>
+</body>
+
+</html>
